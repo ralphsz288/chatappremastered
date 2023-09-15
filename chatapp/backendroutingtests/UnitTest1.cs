@@ -1,3 +1,5 @@
+using static chatapp.WeatherForecast;
+
 namespace backendroutingtests;
 
 public class Tests
