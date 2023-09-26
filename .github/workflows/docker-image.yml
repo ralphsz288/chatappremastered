@@ -19,4 +19,4 @@ jobs:
       run: cd chatapp && docker build -t chatapp-build-image -f Dockerfile-make-build-image .
       
     - name: Build the Docker image
-      run: docker build -t chatapp-prod:$(date +%s) -f Dockerfile .
+      run: cd chatapp && docker build -t chatapp-prod:$(date +%s) -f Dockerfile .
