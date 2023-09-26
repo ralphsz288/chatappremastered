@@ -11,6 +11,10 @@ RUN dotnet restore "chatapp/chatapp.csproj"
 COPY . .
 WORKDIR "/src/chatapp"
 RUN dotnet build "chatapp.csproj" -c Release -o /app/build
+WORKDIR ClientApp
+RUN npm install react-scripts
+RUN npm run test
+WORKDIR ..
 
 FROM build AS publish
 RUN dotnet publish "chatapp.csproj" -c Release -o /app/publish /p:UseAppHost=false
