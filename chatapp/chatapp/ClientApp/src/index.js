@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import {store} from './store'
+import { store } from "./store";
 import { Provider } from "react-redux";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
@@ -10,9 +10,9 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
-<Provider store={store}>
+  <Provider store={store}>
     <App />
-</Provider>,
+  </Provider>
 );
 
 // If you want your app to work offline and load faster, you can change
