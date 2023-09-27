@@ -1,7 +1,12 @@
 import React from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import { templateFunction } from "../slices/templateSlice";
 
 const Home = () => {
-  return <div data-testid="home-1">Hello, world!</div>;
+  // const templateGetItem = useSelector()
+  const dispatch = useDispatch()
+
+  return <div data-testid="home-1" onClick={() => dispatch(templateFunction('test log'))}>Hello, world!</div>;
 };
 
 export default Home;
