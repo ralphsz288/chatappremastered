@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches: [ "master" ]
-
+      
 jobs:
- build:
+ registry-upload:
    runs-on: ubuntu-latest
    steps:
     - name: Checkout master
