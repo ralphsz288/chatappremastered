@@ -1,0 +1,33 @@
+name: Docker Push
+
+on:
+  push:
+    branches:
+      - master
+      
+jobs:
+ registry-upload:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Checkout master
+      uses: actions/checkout@v3
+      
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_API_KEY }}
+
+    - name: Build the ChatApp build  image
+      run: cd chatapp && docker build -t chatapp-build-image -f Dockerfile-make-build-image .
+
+    - name: Build container image
+      run: cd chatapp && docker build -t ${{ secrets.DIGITALOCEAN_REGISTRY_NAME }}/chatapp-prod .
+    
+    - name: Log in to DigitalOcean Container Registry with short-lived credentials
+      run: doctl registry login --expiry-seconds 1200
+    
+    - name: Push image to DigitalOcean Container Registry
+      run: docker push ${{ secrets.DIGITALOCEAN_REGISTRY_NAME }}/chatapp-prod
+
+        
+
