@@ -20,7 +20,7 @@ jobs:
         token: ${{ secrets.DIGITALOCEAN_API_KEY }}
 
     - name: Build the ChatApp build  image
-      run: cd chatapp && docker build -t chatapp-build-image -f Dockerfile-make-build-image
+      run: cd chatapp && docker build -t chatapp-build-image -f Dockerfile-make-build-image .
 
     - name: Build container image
       run: cd chatapp && docker build -t ${{ secrets.DIGITALOCEAN_REGISTRY_NAME }}/chatapp-prod .
