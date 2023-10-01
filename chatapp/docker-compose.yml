@@ -6,8 +6,6 @@ services:
       - .:/src
     working_dir: /src/chatapp/ClientApp
     command: bash -c "npm install react-scripts && npm run test"
-  #    environment:
-#      - ALLOW_EMPTY_PASSWORD=yes
   test-dotnet:
     image: chatapp-test
     volumes:
