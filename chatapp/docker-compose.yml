@@ -2,11 +2,15 @@ version: '3.11'
 services:
   test-react:
     image: "chatapp-test"
+    volumes:
+      - .:/src
     working_dir: /src/chatapp/ClientApp
     command: npm run test
   #    environment:
 #      - ALLOW_EMPTY_PASSWORD=yes
   test-dotnet:
     image: chatapp-test
+    volumes:
+      - .:/src
     working_dir: /src/backendroutingtests
     command: dotnet test

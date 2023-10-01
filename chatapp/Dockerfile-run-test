@@ -7,9 +7,6 @@ COPY ["chatapp/chatapp.csproj", "chatapp/"]
 # install .net dependencies
 RUN dotnet restore "chatapp/chatapp.csproj"
 
-# copy the source code(some files are ignored as per .dockerignore)
-COPY . .
-
 # run .net unit tests
 WORKDIR backendroutingtests
 WORKDIR ..
