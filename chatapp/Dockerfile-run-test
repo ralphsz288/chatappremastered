@@ -19,8 +19,3 @@ WORKDIR "/src/chatapp"
 # run react unit tests(must be run in ClientApp dir)
 WORKDIR ClientApp
 RUN npm install react-scripts
-
-WORKDIR ../..
-RUN chmod +x run_tests.sh
-
-ENTRYPOINT ["cd /src && ./run_tests.sh"]
