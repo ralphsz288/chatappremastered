@@ -6,13 +6,3 @@ COPY ["chatapp/chatapp.csproj", "chatapp/"]
 
 # install .net dependencies
 RUN dotnet restore "chatapp/chatapp.csproj"
-
-# run .net unit tests
-WORKDIR backendroutingtests
-WORKDIR ..
-
-WORKDIR "/src/chatapp"
-
-# run react unit tests(must be run in ClientApp dir)
-WORKDIR ClientApp
-RUN npm install react-scripts
