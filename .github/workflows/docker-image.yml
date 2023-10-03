@@ -6,23 +6,20 @@ on:
       - master
 
 jobs:
-  build:
+  test_and_build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build the build  image
+    - name: Build the build image
       working-directory: chatapp
       run: docker build -t chatapp-build-image -f Dockerfile-make-build-image .
       
-    - name: Build the test image
-      working-directory: chatapp
-      run: docker build -t chatapp-test -f Dockerfile-run-test .
-      
     - name: Run tests
       working-directory: chatapp
-      run: docker-compose up
+      run: docker build -t chatapp-test --progress=plain --target test -f Dockerfile .
 
     - name: Build the Docker image
-      run: cd chatapp && docker build -t chatapp-prod:$(date +%s) -f Dockerfile .
+      working-directory: chatapp
+      run: docker build -t chatapp-production -f Dockerfile .
