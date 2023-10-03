@@ -12,13 +12,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build the build  image
+    - name: Build the build image
       working-directory: chatapp
       run: docker build -t chatapp-build-image -f Dockerfile-make-build-image .
       
     - name: Run tests
       working-directory: chatapp
-      run: docker build -t chatapp-test --progress=plain --target test .
+      run: docker build -t chatapp-test --progress=plain --target test -f Dockerfile .
 
     - name: Build the Docker image
       working-directory: chatapp
